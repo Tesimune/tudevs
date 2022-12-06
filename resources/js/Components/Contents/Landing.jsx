@@ -35,7 +35,7 @@ export default function Landing() {
             <div>
                 <p className='text-2xl font-bold'>It's in our DNA to be the Best.</p>
             </div>
-            <div className='grid md:grid-cols-3'>
+            <div className='grid md:grid-cols-3 gap-16'>
 
                 <div className='grid gap-1 text-center'>
                     <span className='text-5xl font-bold'>50%</span>

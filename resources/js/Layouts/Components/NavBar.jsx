@@ -26,27 +26,27 @@ export default function NavBar(props) {
 
                     <div className="hidden sm:flex sm:items-center sm:ml-6">
                         <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                Dashboard
+                            <NavLink href={route('home')} active={route().current('home')}>
+                                Home
                             </NavLink>
 
-                            <NavLink href={route('dashboard')} >
+                            <NavLink href={route('blog')} active={route().current('blog')}>
                                 Blog
                             </NavLink>
                             
-                            <NavLink href={route('dashboard')} >
+                            <NavLink href={route('about')} active={route().current('about')}>
                                 About
                             </NavLink>
 
-                            <NavLink href={route('dashboard')} >
+                            <NavLink href={route('docs')} active={route().current('docs')}>
                                 Docs
                             </NavLink>
 
-                            <NavLink href={route('dashboard')} >
+                            <NavLink href={route('api')} active={route().current('api')}>
                                 API's
                             </NavLink>
 
-                            <NavLink href={route('dashboard')} >
+                            <NavLink href={route('pricing')} active={route().current('pricing')}>
                                 Pricing
                             </NavLink>
                         </div>
