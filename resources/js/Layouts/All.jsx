@@ -1,7 +1,8 @@
 import React from 'react'
 import NavBar from './Components/NavBar';
 
-export default function Authenticated({ auth, header, children }) {
+
+export default function All({ auth, header, children }) {
 
     return (
         <div>
