@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
 
 
@@ -18,7 +19,7 @@ export default function All({ auth, header, children }) {
 
                 <main className='p-2 md:p-5'>{children}</main>
             </div>
-
+            <Footer />
         </div>
     );
 }

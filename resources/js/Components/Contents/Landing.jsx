@@ -1,9 +1,11 @@
 import React from 'react'
+import { AiOutlineStar, AiOutlineFolderOpen } from 'react-icons/ai'
+import { MdOutlineCreateNewFolder } from 'react-icons/md'
 
 export default function Landing() {
   return (
-    <div className='grid gap-9'>
-        <section className='grid px-3 py-10 md:px-9 gap-10 text-center md:text-left'>
+    <div className='grid gap-16'>
+        <section className='grid px-3 py-16 md:px-9 gap-10 text-center md:text-left'>
             <div className='grid md:grid-cols-2 gap-3'>
                 <div className='md:py-9'>
                     <div className='grid gap-3'>
@@ -30,7 +32,7 @@ export default function Landing() {
             </div>
         </section>
 
-        <section className='grid px-3 py-10 md:px-9 gap-16 text-center'>
+        <section className='grid px-3 py-16 md:px-9 gap-16 text-center border-b-2'>
         
             <div>
                 <p className='text-2xl font-bold'>It's in our DNA to be the Best.</p>
@@ -59,13 +61,40 @@ export default function Landing() {
         
         </section>
 
-        <section className='grid px-3 py-10 md:px-9 gap-16 text-center'>
+        <section className='grid px-3 py-16 md:px-9 gap-16 text-center border-b-2'>
         
             <div>
-                <p className='text-2xl font-bold'>Start building amazing web experiences.</p>
+                <p className='text-2xl font-bold text-center'>Start building amazing experiences.</p>
             </div>
         
-            <div></div>
+            <div className='grid md:grid-cols-3 gap-16'>
+
+                <div className='grid justify-center gap-1'>
+                    <span className='flex justify-center'>
+                        <MdOutlineCreateNewFolder className='h-16 w-16' />
+                    </span>
+                    <span className='text-3xl font-bold text-center'>Create A Project</span>
+                    <span className='text-xl font-bold text-center'>Create a Project and Share with Us, we'll love to here about it</span>
+                </div>
+
+                <div className='grid justify-center gap-1'>
+                    <span className='flex justify-center'>
+                        <AiOutlineFolderOpen className='h-16 w-16' />
+                    </span>
+                    <span className='text-3xl font-bold text-center'>Build Public</span>
+                    <span className='text-xl font-bold text-center'>Build Open Source Projects and build Public with contributor's</span>
+                </div>
+
+                <div className='grid justify-center gap-1'>
+                    <span className='flex justify-center'>
+                        <AiOutlineStar className='h-16 w-16' />
+                    </span>
+                    <span className='text-3xl font-bold text-center'>Get Project Reviews</span>
+                    <span className='text-xl font-bold text-center'>Get Your Project Reviewed, to build better.</span>
+                </div>
+
+            </div>
+
         </section>
     </div>
   )

@@ -3,21 +3,17 @@ import { Link } from '@inertiajs/inertia-react';
 
 export default function Guest({ children }) {
     return (
-        <div className="grid md:grid-cols-2">
-            <div className="bg-slate-900 min-h-screen flex-col sm:justify-center items-center pt-6 sm:pt-0 hidden md:block">
-                {/* <img src='/images/auth.jpg' alt='auth' className='h-full w-full'/> */}
-            </div>
-            <div className="min-h-screen flex flex-col sm:justify-center items-center p-3 pt-6 sm:pt-0">
+           
+            <div className="min-h-screen flex flex-col sm:justify-center items-center p-3 pt-9 sm:pt-0">
                 <div>
                     <Link href="/">
                         <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
                     </Link>
                 </div>
 
-                <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-blue-300 shadow-md overflow-hidden sm:rounded-lg">
+                <div className="bg-transparent w-full sm:max-w-md mt-6 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg">
                     {children}
                 </div>
             </div>
-        </div>
     );
 }
