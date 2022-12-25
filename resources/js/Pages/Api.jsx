@@ -1,7 +1,10 @@
 import All from '@/Layouts/All';
 import { Link, Head } from '@inertiajs/inertia-react';
+import CodeDisplay from './Api/CodeDisplay';
 
-export default function Api(props) {
+
+export default function Api({ code, language }) {
+
     return (
         <All>
             <Head title="Api" />
@@ -11,8 +14,13 @@ export default function Api(props) {
                     <div className='hidden md:block col-span-2'></div>
                     <div className='grid md:col-span-5 gap-7 p-3'>
                         <span className='grid justify-center text-lg'>
-                           No Active API's Yet
+                           ReactJS Template
                         </span>
+                            <CodeDisplay />
+                            <CodeDisplay />
+                            <CodeDisplay />
+
+
                     </div>
                     <div className='hidden md:block col-span-2'></div>
                 </section>
