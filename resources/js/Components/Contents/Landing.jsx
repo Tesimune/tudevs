@@ -5,8 +5,8 @@ import { MdOutlineCreateNewFolder } from 'react-icons/md'
 export default function Landing() {
   return (
     <div className='grid gap-16'>
-        <section className='grid px-3 py-16 md:px-9 gap-10 text-center md:text-left'>
-            <div className='grid md:grid-cols-2 gap-3'>
+        <section className='grid py-9 px-3 md:px-9 gap-10 text-center md:text-left'>
+            <div className='grid md:grid-cols-2 gap-9'>
                 <div className='md:py-9'>
                     <div className='grid gap-3'>
                         <span className='text-3xl md:text-5xl font-bold'>
@@ -14,7 +14,7 @@ export default function Landing() {
                         </span>
                         <span className='text-lg'>
                             There’s a reason for you to be here. 
-                            Whether your a developer or looking for delivering dynamic web experiences with performance and security that scales.
+                            Whether your’re a developer or looking for delivering dynamic web experiences with performance and security that scales.
                         </span>
                     </div>
                 </div>
@@ -22,13 +22,13 @@ export default function Landing() {
                     <img src='/images/1.jpg' alt='image' />
                 </div>
             </div>
-            <div className='flex justify-center gap-3'>
-                <button className='p-3 border border-slate-700 rounded-lg hover:bg-slate-500 hover:text-white'>
+            <div className='flex justify-center gap-3 md:gap-9'>
+                <button className='text-white items-center gap-3 rounded-lg py-3 px-5 bg-black hover:bg-transparent hover:text-yellow-900 hover:ring-2 ring-black'>
                     Get Started Now
                 </button>
-                {/* <button className='p-3 border border-slate-700 rounded-lg hover:bg-slate-500 hover:text-white'>
-                    I'm a Developer
-                </button> */}
+                <button className='text-lg font-semibold hover:text-indigo-900'>
+                    I’m a Developer
+                </button>
             </div>
         </section>
 

@@ -15,7 +15,7 @@ export default function Contact() {
                         </span>
                         <span className='text-lg'>
                             There’s a reason for you to be here. 
-                            Whether your a developer or looking for delivering dynamic web experiences with performance and security that scales.
+                            Whether your’re a developer or looking for delivering dynamic web experiences with performance and security that scales.
                         </span>
                         <div className='grid gap-5'>
                             <div className='flex gap-5'>

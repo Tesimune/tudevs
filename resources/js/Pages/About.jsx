@@ -15,7 +15,7 @@ export default function About(props) {
                         </span>
                         <span className='text-lg'>
                             There’s a reason for you to be here. 
-                            Whether your a developer or looking for delivering dynamic web experiences with performance and security that scales.
+                            Whether your’re a developer or looking for delivering dynamic web experiences with performance and security that scales.
                         </span>
                     </div>
                     <div className='hidden md:block col-span-2'></div>

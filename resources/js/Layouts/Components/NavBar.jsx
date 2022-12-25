@@ -5,6 +5,9 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/inertia-react';
 import { IoIosArrowDown } from 'react-icons/io'
+import {GrClose} from 'react-icons/gr';
+import {MdMenu} from 'react-icons/md';
+
 
 export default function NavBar(props) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -13,7 +16,7 @@ export default function NavBar(props) {
 
   return (
     <div>
-        <nav className="bg-white border-b border-gray-100 fixed w-full">
+        <nav className="bg-white border-b border-gray-100 fixed w-full z-40">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between">
                     <div className="flex">
@@ -24,113 +27,146 @@ export default function NavBar(props) {
                         </div>
                     </div>
 
-                    <div className="hidden sm:flex sm:items-center sm:ml-6">
-                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <NavLink href={route('home')} active={route().current('home')}>
-                                Home
-                            </NavLink>
+                    <div className='flex items-center'>
 
-                            <NavLink href={route('blog')} active={route().current('blog')}>
-                                Blog
-                            </NavLink>
-                            
-                            <NavLink href={route('about')} active={route().current('about')}>
-                                About
-                            </NavLink>
+                        <div className="hidden sm:flex sm:items-center sm:ml-6">
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('home')} active={route().current('home')}>
+                                    Home
+                                </NavLink>
 
-                            <NavLink href={route('docs')} active={route().current('docs')}>
-                                Docs
-                            </NavLink>
+                                <NavLink href={route('blog.index')} active={route().current('blog.index')}>
+                                    Blog
+                                </NavLink>
+                                
+                                <NavLink href={route('about')} active={route().current('about')}>
+                                    About
+                                </NavLink>
 
-                            <NavLink href={route('api')} active={route().current('api')}>
-                                API's
-                            </NavLink>
-
-                            <NavLink href={route('pricing')} active={route().current('pricing')}>
-                                Pricing
-                            </NavLink>
-                        </div>
-                        <div className="ml-3 relative">
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="inline-flex rounded-md">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
                                         <button
                                             type="button"
-                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                            className="inline-flex items-center px-1 pt-1 text-gray-500 text-sm font-bold leading-5 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
                                         >
-                                            <div className='bg-slate-300 p-5 rounded-full'></div>
+                                            <span className=''>Projects</span>
 
                                             <IoIosArrowDown />
                                         </button>
-                                    </span>
-                                </Dropdown.Trigger>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Content>
+                                        <Dropdown.Link href={route('projects')}>
+                                            Tudev Projects
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href={route('open')}>
+                                            Open Source
+                                        </Dropdown.Link>
+                                    </Dropdown.Content>
+                                </Dropdown>
 
-                                <Dropdown.Content>
+                                <NavLink href={route('api')} active={route().current('api')}>
+                                    API's
+                                </NavLink>
 
-                                    {auth ? (
-                                        <>
-                                            <Dropdown.Link href={route('dashboard')} className="text-sm text-gray-700 dark:text-gray-500 underline">
-                                                Dashboard
-                                            </Dropdown.Link>
-                                            <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                            <Dropdown.Link href={route('logout')} method="post" as="button">
-                                                Log Out
-                                            </Dropdown.Link>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Dropdown.Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
-                                                Log in
-                                            </Dropdown.Link>
-
-                                            <Dropdown.Link
-                                                href={route('register')}
-                                                className="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
-                                            >
-                                                Register
-                                            </Dropdown.Link>
-                                        </>
-                                    )}
-                                    
-                                </Dropdown.Content>
-                            </Dropdown>
+                                <NavLink href={route('pricing')} active={route().current('pricing')}>
+                                    Pricing
+                                </NavLink>
+                            </div>
                         </div>
-                    </div>
+                        
 
-                    <div className="-mr-2 flex items-center sm:hidden">
-                        <button
-                            onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                        >
-                            <div className='bg-slate-300 p-5 rounded-full'></div>
-                            <IoIosArrowDown />
-                        </button>
+                        <div className='flex items-center'>
+                            <div className="ml-3 relative">
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                            <button
+                                                type="button"
+                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                            >
+                                                <div className='bg-slate-300 p-5 rounded-full'></div>
+
+                                                <IoIosArrowDown />
+                                            </button>
+                                        </span>
+                                    </Dropdown.Trigger>
+
+                                    <Dropdown.Content>
+
+                                        {auth ? (
+                                            <>
+                                                <Dropdown.Link href={route('dashboard')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                                                    Dashboard
+                                                </Dropdown.Link>
+                                                <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                                <Dropdown.Link href={route('logout')} method="post" as="button">
+                                                    Log Out
+                                                </Dropdown.Link>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Dropdown.Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                                                    Log in
+                                                </Dropdown.Link>
+
+                                                <Dropdown.Link
+                                                    href={route('register')}
+                                                    className="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
+                                                >
+                                                    Register
+                                                </Dropdown.Link>
+                                            </>
+                                        )}
+                                        
+                                    </Dropdown.Content>
+                                </Dropdown>
+                            </div>
+
+                            <div className="flex items-center sm:hidden">
+                                <button
+                                    onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
+                                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                                >
+                                    {showingNavigationDropdown ? <GrClose className='w-7 h-7'/> : <MdMenu className='w-7 h-7'/>}
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
-                <div className="pt-2 pb-3 space-y-1">
-                    <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                        Dashboard
+                <div className="bg-white h-full space-y-3 p-3 w-4/5 fixed right-0">
+                    <ResponsiveNavLink href={route('home')} active={route().current('home')}>
+                        Home
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink href={route('blog.index')} active={route().current('blog.index')}>
+                        Blog
+                    </ResponsiveNavLink>
+                    
+                    <ResponsiveNavLink href={route('about')} active={route().current('about')}>
+                        About
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink href={route('projects')} active={route().current('projects')}>
+                        Tudev Projects
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink href={route('open')} active={route().current('open')}>
+                        Open Source
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink href={route('api')} active={route().current('api')}>
+                        API's
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink href={route('pricing')} active={route().current('pricing')}>
+                        Pricing
                     </ResponsiveNavLink>
                 </div>
 
-                <div className="pt-4 pb-1 border-t border-gray-200">
-                    <div className="px-4">
-                        <div className="font-medium text-base text-gray-800">
-                            {auth?.user?.name}
-                        </div>
-                        <div className="font-medium text-sm text-gray-500">{auth?.user?.email}</div>
-                    </div>
-
-                    <div className="mt-3 space-y-1">
-                        <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
-                        <ResponsiveNavLink method="post" href={route('logout')} as="button">
-                            Log Out
-                        </ResponsiveNavLink>
-                    </div>
-                </div>
             </div>
         </nav>
     </div>
