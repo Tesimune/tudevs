@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Blog;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -14,7 +15,9 @@ class BlogController extends Controller
      */
     public function blog()
     {
-        return Inertia::render('Blog/Index');
+        return Inertia::render('Blog/Index', [
+            "blogs" => Blog::latest()->get(),
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Blog/Create');
     }
 
     /**
@@ -35,7 +38,15 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
+            "publish" => ['required', 'boolean'],
+            "content" => ['required', 'string', 'min:50'],
+        ]);
+
+        Blog::create([...$validated, "slug" => str_replace(" ", "_", $validated["title"])]);
+
+        return redirect()->route("blog.index");
     }
 
     /**
@@ -44,9 +55,11 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        //
+        return Inertia::render("Blog/Show", [
+            "blog" => $blog,
+        ]);
     }
 
     /**
@@ -55,9 +68,11 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Blog $blog)
     {
-        //
+        return Inertia::render('Blog/Edit', [
+            'blog' => $blog,
+        ]);
     }
 
     /**
@@ -67,9 +82,21 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Blog $blog)
     {
-        //
+        $validated = $request->validate([
+            "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
+            "publish" => ['required', 'boolean'],
+            "content" => ['required', 'string', 'min:50'],
+        ]);
+
+        $blog->title = $validated['title'];
+        $blog->slug = str_replace(" ", "-", $validated["title"]);
+        $blog->publish = $validated['publish'];
+        $blog->content = $validated['content'];
+        $blog->save();
+
+        return redirect()->route("blog.index");
     }
 
     /**
@@ -80,6 +107,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog->delete();
+        // return redirect()->route("blog.index");
     }
 }
