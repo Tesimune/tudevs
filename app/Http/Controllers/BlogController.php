@@ -91,7 +91,7 @@ class BlogController extends Controller
         ]);
 
         $blog->title = $validated['title'];
-        $blog->slug = str_replace(" ", "-", $validated["title"]);
+        $blog->slug = str_replace(" ", "_", $validated["title"]);
         $blog->publish = $validated['publish'];
         $blog->content = $validated['content'];
         $blog->save();
@@ -105,7 +105,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
         $blog->delete();
         // return redirect()->route("blog.index");
