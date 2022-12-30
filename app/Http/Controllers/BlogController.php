@@ -44,7 +44,7 @@ class BlogController extends Controller
             "content" => ['required', 'string', 'min:50'],
         ]);
 
-        Blog::create([...$validated, "slug" => str_replace(" ", "_", $validated["title"])]);
+        Blog::create([...$validated, "user_id" => auth()->user()->id, "slug" => str_replace(" ", "_", $validated["title"])]);
 
         return redirect()->route("blog.index");
     }

@@ -19,36 +19,40 @@ export default function Index({blogs}) {
     return (
         <All>
             <Head title="Blog" />
-            <section className='grid md:grid-cols-9'>
-                <div className='hidden md:block col-span-2'></div>
-                <div className="grid md:col-span-5 gap-7 p-3 md:p-">
-                    <div className='flex justify-between'>
-                        <p className='flex items-center font-semibold text-5xl'>Blog</p>
-                        <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
-                    </div>
-                    {blogs.map(blog => (
-                        <div key={blog.id} className='grid gap-2 py-7 relative z-90'>
-                            <span className='text-indigo-500 text-3xl'>{blog.title}</span>
-                            <p className='grid gap-2 text-lg'>
-                                {blog.content.slice(0, 300)}...
-                            <Link className='flex items-center text-indigo-500' href={route('blog.show', blog.id)}>
-                                Read more
-                            </Link>
-                            </p>
-                            <div className='flex gap-3 absolute top-3 right-3'>
-                                <Link className='flex items-center text-indigo-500' href={route('blog.edit', blog.id)}>
-                                    <FiEdit3 />
-                                </Link>
-                                <button className='flex items-center text-red-500' onClick={() => deleteBlog(blog.id)}>
-                                    <MdOutlineDelete />
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                    
+            <div className='grid gap-7 md:p-9'>
+                <div className='flex justify-between'>
+                    <p className='flex items-center font-semibold text-5xl'>Blog</p>
+                    <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
                 </div>
-                <div className='hidden md:block col-span-2'></div>
-            </section>
+                <section className='grid md:grid-cols-9'>
+                    <div className='hidden md:block col-span-2'></div>
+                    <div className="grid md:col-span-5 gap-7 p-3 md:p-">
+                        {blogs.map(blog => (
+                            <div key={blog.id} className='grid gap-3 py-7 relative z-90'>
+                                <span className='text-indigo-500 text-3xl'>{blog.title}</span>
+                                <p className='grid gap-2 text-lg'>
+                                    {blog.content.slice(0, 300)}...
+                                </p>
+                                <div className='flex justify-between'>
+                                    <div className='flex gap-3'>
+                                        <Link className='flex items-center text-indigo-500' href={route('blog.edit', blog.id)}>
+                                            <FiEdit3 />
+                                        </Link>
+                                        <button className='flex items-center text-red-500' onClick={() => deleteBlog(blog.id)}>
+                                            <MdOutlineDelete />
+                                        </button>
+                                    </div>
+                                    <Link className='flex items-center text-indigo-500' href={route('blog.show', blog.id)}>
+                                        Read more
+                                    </Link>
+                                </div>
+                            </div>
+                        ))}
+                        
+                    </div>
+                    <div className='hidden md:block col-span-2'></div>
+                </section>
+            </div>
         </All>
     );
 }
