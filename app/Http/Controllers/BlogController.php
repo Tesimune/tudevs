@@ -27,7 +27,10 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Blog/Create');
+        if (auth()->user()->type == "admin"){
+            return Inertia::render('Blog/Create');
+        }
+        return redirect()->route("blog.index");
     }
 
     /**
@@ -38,14 +41,17 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
-            "publish" => ['required', 'boolean'],
-            "content" => ['required', 'string', 'min:50'],
-        ]);
+        if (auth()->user()->type == "admin"){
+            $validated = $request->validate([
+                "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
+                "publish" => ['required', 'boolean'],
+                "content" => ['required', 'string', 'min:50'],
+            ]);
 
-        Blog::create([...$validated, "user_id" => auth()->user()->id, "slug" => str_replace(" ", "_", $validated["title"])]);
+            Blog::create([...$validated, "user_id" => auth()->user()->id, "slug" => str_replace(" ", "_", $validated["title"])]);
 
+            return redirect()->route("blog.index");
+        }
         return redirect()->route("blog.index");
     }
 
@@ -70,9 +76,12 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return Inertia::render('Blog/Edit', [
-            'blog' => $blog,
-        ]);
+        if (auth()->user()->type == "admin"){
+            return Inertia::render('Blog/Edit', [
+                'blog' => $blog,
+            ]);
+        }
+        return redirect()->route("blog.index");
     }
 
     /**
@@ -84,19 +93,23 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $validated = $request->validate([
-            "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
-            "publish" => ['required', 'boolean'],
-            "content" => ['required', 'string', 'min:50'],
-        ]);
+        if (auth()->user()->type == "admin"){
+            $validated = $request->validate([
+                "title" => ['required', 'string', 'min:10', 'max:255', "unique:blogs"],
+                "publish" => ['required', 'boolean'],
+                "content" => ['required', 'string', 'min:50'],
+            ]);
 
-        $blog->title = $validated['title'];
-        $blog->slug = str_replace(" ", "_", $validated["title"]);
-        $blog->publish = $validated['publish'];
-        $blog->content = $validated['content'];
-        $blog->save();
+            $blog->title = $validated['title'];
+            $blog->slug = str_replace(" ", "_", $validated["title"]);
+            $blog->publish = $validated['publish'];
+            $blog->content = $validated['content'];
+            $blog->save();
 
+            return redirect()->route("blog.index");
+        }
         return redirect()->route("blog.index");
+
     }
 
     /**
@@ -107,7 +120,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        $blog->delete();
-        // return redirect()->route("blog.index");
+        if (auth()->user()->type == "admin"){
+            $blog->delete();
+        }
+        return redirect()->route("blog.index");
     }
 }

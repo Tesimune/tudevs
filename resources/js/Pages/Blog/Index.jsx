@@ -1,11 +1,12 @@
 import All from '@/Layouts/All';
-import { Link, Head, useForm } from '@inertiajs/inertia-react';
+import { Link, Head, useForm, usePage } from '@inertiajs/inertia-react';
 import { FiEdit3 } from 'react-icons/fi'
 import { MdOutlineDelete } from 'react-icons/md'
 
 
 export default function Index({blogs}) {
 
+    const auth = usePage().props.auth;
     
     const {delete: remove} = useForm();
 
@@ -22,7 +23,9 @@ export default function Index({blogs}) {
             <div className='grid gap-7 md:p-9'>
                 <div className='flex justify-between'>
                     <p className='flex items-center font-semibold text-5xl'>Blog</p>
-                    <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
+                    {auth?.user?.type !== 'admin' ? (null):(
+                        <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
+                    )}
                 </div>
                 <section className='grid md:grid-cols-9'>
                     <div className='hidden md:block col-span-2'></div>
@@ -34,14 +37,16 @@ export default function Index({blogs}) {
                                     {blog.content.slice(0, 300)}...
                                 </p>
                                 <div className='flex justify-between'>
-                                    <div className='flex gap-3'>
-                                        <Link className='flex items-center text-indigo-500' href={route('blog.edit', blog.id)}>
-                                            <FiEdit3 />
-                                        </Link>
-                                        <button className='flex items-center text-red-500' onClick={() => deleteBlog(blog.id)}>
-                                            <MdOutlineDelete />
-                                        </button>
-                                    </div>
+                                    {auth?.user?.type !== 'admin' ? (null):(
+                                        <div className='flex gap-3'>
+                                            <Link className='flex items-center text-indigo-500' href={route('blog.edit', blog.id)}>
+                                                <FiEdit3 />
+                                            </Link>
+                                            <button className='flex items-center text-red-500' onClick={() => deleteBlog(blog.id)}>
+                                                <MdOutlineDelete />
+                                            </button>
+                                        </div>
+                                    )}
                                     <Link className='flex items-center text-indigo-500' href={route('blog.show', blog.id)}>
                                         Read more
                                     </Link>
