@@ -11,7 +11,7 @@ export default function About(props) {
                     <div className='hidden md:block col-span-2'></div>
                     <div className='grid md:col-span-5 gap-7 p-3'>
                         <span className='text-3xl md:text-5xl font-bold'>
-                            <b>The future is here with tudev and with you it gets better.</b>
+                            <b>The future is here with tudevs and with you it gets better.</b>
                         </span>
                         <span className='text-lg'>
                             There’s a reason for you to be here. 

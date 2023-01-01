@@ -29,7 +29,7 @@ export default function Contact() {
                                 <GrDeploy className='flex text-white h-9 w-9 items-center'/>
                                 <div className='grid font-bold items-center text-left'>
                                     <span className='text-indigo-900 flex text-xs'>Deploy</span>
-                                    <span className='text-indigo-900 flex text-md'>Deploy your Project and Join the tudev Project review</span>
+                                    <span className='text-indigo-900 flex text-md'>Deploy your Project and Join the tudevs Project review</span>
                                 </div>
                             </div>
                         </div>
