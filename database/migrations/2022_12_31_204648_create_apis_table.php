@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status')->default(true);
             $table->string('public_auth')->unique();
             $table->string('private_auth')->unique();
+            $table->string('access')->default(true);
             $table->timestamps();
         });
     }
