@@ -12,21 +12,21 @@ export default function Landing() {
                         <span className='text-3xl md:text-5xl font-bold'>
                             <b>The future is here with tudevs and with you it gets better.</b>
                         </span>
-                        <span className='text-lg'>
+                        <span className='md:'>
                             There’s a reason for you to be here. 
                             Whether your’re a developer or looking for delivering dynamic web experiences with performance and security that scales.
                         </span>
                     </div>
                 </div>
                 <div className='grid justify-center'>
-                    <img src='/images/1.jpg' alt='image' />
+                    <img src='/images/1.png' alt='image' />
                 </div>
             </div>
-            <div className='flex justify-center gap-3 md:gap-9'>
-                <button className='text-white items-center gap-3 rounded-lg py-3 px-5 bg-black hover:bg-transparent hover:text-yellow-900 hover:ring-2 ring-black'>
+            <div className='flex justify-center gap-3 md:gap-9 text-sm md:text-lg'>
+                <button className='text-white items-center gap-3 rounded-lg py-3 px-5 bg-black hover:bg-transparent hover:text-slate-900 hover:ring-2 ring-black'>
                     Get Started Now
                 </button>
-                <button className='text-lg font-semibold hover:text-indigo-900'>
+                <button className='font-semibold hover:text-indigo-900'>
                     I’m a Developer
                 </button>
             </div>

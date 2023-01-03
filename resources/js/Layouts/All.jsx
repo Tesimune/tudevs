@@ -9,10 +9,10 @@ export default function All({ auth, header, children }) {
         <div>
 
             <NavBar />
-            <div className="min-h-screen bg-gray-10 pt-20">
+            <div className="min-h-screen bg-gray-50 pt-20">
 
                 {header && (
-                    <header className="bg-white dark:bg-slate-900 shadow">
+                    <header className="shadow">
                         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
                     </header>
                 )}
