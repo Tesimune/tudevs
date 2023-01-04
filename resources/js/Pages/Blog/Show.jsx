@@ -18,7 +18,16 @@ export default function Index({blog}) {
     }
 
     return (
-        <All>
+        <All 
+            header={
+                <div className='flex justify-between'>
+                    <h2 className="flex items-center font-semibold text-xl text-gray-800 leading-tight">Blog</h2>
+                    {auth?.user?.type !== 'admin' ? (null):(
+                        <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
+                    )}
+                </div>
+            }
+        >
             <Head title="Blog" />
             <div className='grid gap-7 md:p-9'>
                 <div className='flex justify-between'>

@@ -1,9 +1,9 @@
 import React from 'react'
-import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
 
 
-export default function All({ auth, header, children }) {
+export default function All({ header, children }) {
 
     return (
         <div>
@@ -13,7 +13,7 @@ export default function All({ auth, header, children }) {
 
                 {header && (
                     <header className="shadow">
-                        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
+                        <div className="max-w-7xl mx-auto p-5">{header}</div>
                     </header>
                 )}
 

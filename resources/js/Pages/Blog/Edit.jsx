@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link, Head, useForm } from '@inertiajs/inertia-react';
+import { Link, Head, useForm, usePage } from '@inertiajs/inertia-react';
 import Authenticated from '@/Layouts/AuthenticatedLayout'
 
 function Edit({blog}) {
+
+    const auth = usePage().props.auth;
 
     const {data, setData, errors, put} = useForm({
         title: blog.title,
@@ -16,10 +18,19 @@ function Edit({blog}) {
     }
 
   return (
-    <Authenticated>
+    <Authenticated
+        header={
+            <div className='flex justify-between'>
+                <h2 className="flex items-center font-semibold text-xl text-gray-800 leading-tight">Blog</h2>
+                {auth?.user?.type !== 'admin' ? (null):(
+                    <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
+                )}
+            </div>
+        }
+    >
         <div>
             <form onSubmit={submit} className='grid gap-3 pt-14 px-1 md:px-72'>
-                <input className='border-b-2 w-full outline-none' placeholder='Header' value={data.title}
+                <input className='bg-transparent border-b-2 w-full outline-none' placeholder='Header' value={data.title}
                     onChange={(e) => setData("title", e.target.value) }/>
                 { errors.title && <p className='text-red-500'>{ errors.title }</p>}
                 <textarea className='h-96 w-full outline-none' value={data.content}

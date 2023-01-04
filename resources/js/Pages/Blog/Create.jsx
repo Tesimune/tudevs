@@ -19,7 +19,7 @@ function Create() {
     <Authenticated>
         <div>
             <form onSubmit={submit} className='grid gap-3 pt-14 px-1 md:px-72'>
-                <input className='border-b-2 w-full outline-none' placeholder='Header' value={data.title}
+                <input className='bg-transparent border-b-2 w-full outline-none' placeholder='Header' value={data.title}
                     onChange={(e) => setData("title", e.target.value) }/>
                 { errors.title && <p className='text-red-500'>{ errors.title }</p>}
                 <textarea className='h-96 w-full outline-none' value={data.content}

@@ -18,15 +18,18 @@ export default function Index({blogs}) {
     }
 
     return (
-        <All>
-            <Head title="Blog" />
-            <div className='grid gap-7 md:p-9'>
+        <All 
+            header={
                 <div className='flex justify-between'>
-                    <p className='flex items-center font-semibold text-5xl'>Blog</p>
+                    <h2 className="flex items-center font-semibold text-xl text-gray-800 leading-tight">Blog</h2>
                     {auth?.user?.type !== 'admin' ? (null):(
                         <Link href={route('blog.create')} className='flex items-center text-indigo-500 font-semibold text-xl'>+Create</Link>
                     )}
                 </div>
+            }
+        >
+            <Head title="Blog" />
+            <div className='grid gap-7 md:p-9'>
                 <section className='grid md:grid-cols-9'>
                     <div className='hidden md:block col-span-2'></div>
                     <div className="grid md:col-span-5 gap-7 p-3 md:p-">
