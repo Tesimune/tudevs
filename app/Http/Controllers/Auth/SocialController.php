@@ -58,6 +58,15 @@ class SocialController extends Controller
 
 
     }
+    
+    public function setgoogleredirect(Request $request)
+    {
+        $userdata = Socialite::driver('google')->user();
+            // $user->token
+            $user = User::updateOrCreate([
+                'google_token' => $userdata->token,
+            ]);
+    }
 
     public function githubredirect(Request $request)
     {
@@ -101,5 +110,16 @@ class SocialController extends Controller
         }
 
     }
-    
+
+    public function setgithubredirect(Request $request)
+    {
+
+        $userdata = Socialite::driver('github')->user();
+            // $user->token
+            $user = User::updateOrCreate([
+                'github_token' => $userdata->token,
+            ]);
+    }
+
+
 }
