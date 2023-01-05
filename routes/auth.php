@@ -8,12 +8,23 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
+
+    Route::get('/auth/google/redirect', [SocialController::class, 'googleredirect'])
+                ->name('googlelogin');
+                
+    Route::get('/auth/google/callback', [SocialController::class, 'googlecallback']);
+                
+    Route::get('/auth/github/redirect', [SocialController::class, 'githubredirect'])
+                ->name('githublogin');
+
+    Route::get('/auth/github/callback', [SocialController::class, 'githubcallback']);
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
