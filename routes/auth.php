@@ -26,11 +26,11 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/auth/github/callback', [SocialController::class, 'githubcallback']);
 
-    Route::get('/auth/google/redirect', [SocialController::class, 'setgoogleredirect'])
-                ->name('setgooglelogin');
+    // Route::get('/auth/google/redirect', [SocialController::class, 'setgoogleredirect'])
+    //             ->name('setgooglelogin');
 
-    Route::get('/auth/github/redirect', [SocialController::class, 'setgithubredirect'])
-                ->name('setgithublogin');
+    // Route::get('/auth/github/redirect', [SocialController::class, 'setgithubredirect'])
+    //             ->name('setgithublogin');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
