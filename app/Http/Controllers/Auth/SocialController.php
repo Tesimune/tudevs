@@ -25,19 +25,20 @@ class SocialController extends Controller
     {
 
         $userdata = Socialite::driver('google')->user();
-        $user = User::where('email', $userdata->email)->whereNotNull('gmail_token')->first();
-        $userNull = User::where('email', $userdata->email)->where('gmail_token', null)->first();
+        $user = User::where('email', $userdata->email)->first();
+        // $user = User::where('email', $userdata->email)->whereNotNull('gmail_token')->first();
+        // $userNull = User::where('email', $userdata->email)->where('gmail_token', null)->first();
         
         if($user){
             
             Auth::login($user);
             return redirect()->route("dashboard");
 
-        }elseif($userNull){
+        // }elseif($userNull){
   
-            echo '<script>';
-            echo 'alert("The email address associating with your gmail is already in use!!!")';
-            echo '</script>';
+        //     echo '<script>';
+        //     echo 'alert("The email address associating with your gmail is already in use!!!")';
+        //     echo '</script>';
             // return redirect()->route("home");
               
         }else{
@@ -77,8 +78,9 @@ class SocialController extends Controller
     {
 
         $userdata = Socialite::driver('github')->user();
-        $user = User::where('email', $userdata->email)->whereNotNull('github_token')->first();
-        $guthubNull = User::where('email', $userdata->email)->where('github_token', null )->first();
+        $user = User::where('email', $userdata->email)->first();
+        // $user = User::where('email', $userdata->email)->whereNotNull('github_token')->first();
+        // $guthubNull = User::where('email', $userdata->email)->where('github_token', null )->first();
 
         if($user){
             
@@ -86,11 +88,11 @@ class SocialController extends Controller
             return redirect()->route("dashboard");
 
       
-        }elseif($guthubNull){
+        // }elseif($guthubNull){
   
-            echo '<script>';
-            echo 'alert("The email address associating with your github is already in use!!!")';
-            echo '</script>';
+        //     echo '<script>';
+        //     echo 'alert("The email address associating with your github is already in use!!!")';
+        //     echo '</script>';
             // return redirect()->route("home");
               
         }else{
